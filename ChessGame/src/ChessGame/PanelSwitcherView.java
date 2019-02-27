@@ -36,7 +36,8 @@ public class PanelSwitcherView extends JFrame{
 
 		boardPanel = board;
 		homePanel = home;
-		
+		boardPanel.setPanelSwitcher(this);
+
 		JPanel pNorth = new JPanel();
 		JPanel pCenter = new JPanel();
 	//	JPanel pWest = new JPanel();
@@ -90,7 +91,10 @@ public class PanelSwitcherView extends JFrame{
 	       validate();
 	       repaint();
 	   }
-	  	
+	public void update(){
+		validate();
+		repaint();
+	}
 	/**
      * Register the controller as the listener to the panel switching
 	 * 

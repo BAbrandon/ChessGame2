@@ -21,7 +21,7 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 	private String string;
 	private Board myBoard;
 	private MouseListener mouseList;
-
+	private PanelSwitcherView myPanelSwitcherView;
 	private int fromX,fromY,toX,toY;
 	private boolean from, set;
 	private boolean play;
@@ -169,7 +169,9 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 	public void updateBoard(Board b){
 		myBoard = b;
 	}
-
+	public void setPanelSwitcher(PanelSwitcherView view){
+		myPanelSwitcherView = view;
+	}
 	/*
 	 * register listener
 	 */
@@ -199,18 +201,20 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 	 */
 	public void run(){
 		if(play){
-			System.out.println("player1");
+			System.out.println("player1\n\n\n turn");
 			if (p1.movePiece(myBoard, fromX, fromY, toX, toY)) {
 				fromX = fromY = toX = toY = -1;
 				play = false;
 				set = false;
-
+				System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
+				myPanelSwitcherView.update();
 			}
 		}else{
-			System.out.println("player2");
+			System.out.println("player2\n\n\n\n");
 			if(p2.movePiece(myBoard,fromX,fromY,toX,toY)){
 				fromX = fromY = toX = toY = -1;
 				play = true;
+				myPanelSwitcherView.update();
 			}
 		}
 	}
@@ -267,16 +271,27 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 		if(play){
 			System.out.println("player1");
 			if (p1.movePiece(myBoard, fromX, fromY, toX, toY)) {
-				fromX = fromY = toX = toY = -1;
+
 				play = false;
 				set = false;
-
+				System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
+				myPanelSwitcherView.update();
+				System.out.println(""+fromX+" "+fromY+"  "+toX+" "+toY);
+				fromX = fromY = toX = toY = -1;
+				repaint();
+				validate();
 			}
 		}else{
 			System.out.println("player2");
 			if(p2.movePiece(myBoard,fromX,fromY,toX,toY)){
-				fromX = fromY = toX = toY = -1;
+
 				play = true;
+				System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
+				System.out.println("" + fromX + " " + fromY + "  " + toX + " " + toY);
+				myPanelSwitcherView.update();
+				fromX = fromY = toX = toY = -1;
+				repaint();
+				validate();
 			}
 		}
 	}

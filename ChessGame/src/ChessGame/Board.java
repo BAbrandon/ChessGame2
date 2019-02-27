@@ -146,4 +146,12 @@ public class Board {
      * @param e
      */
     public void actionListener(ActionEvent e){}
+
+    public void movePiece(Board board, int fromX, int fromY, int toX, int toY){
+        ChessPiece myPiece = board.getPiece(fromX, fromY);
+        JButton myPanelboard[][] = board.getPanelBoard();
+        ChessPiece chessboard[][] = board.getChessboard();
+        myPanelboard[toX][toY].add(myPiece.getMyLabel());
+        chessboard[toX][toY] = myPiece;
+    }
 }

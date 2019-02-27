@@ -24,8 +24,10 @@ public class Pawn extends ChessPiece{
     /**
      * the move of the piece
      */
-    public void move(Board board, int toX, int toY) {
-
+    public void move(Board board, int fromX, int fromY, int toX, int toY) {
+        if(isValid(board,fromX,fromY,toX,toY)){
+            board.movePiece(board,fromX,fromY,toX,toY);
+        }
     }
     
     /**

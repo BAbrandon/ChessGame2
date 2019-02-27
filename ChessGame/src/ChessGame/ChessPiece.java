@@ -13,6 +13,8 @@ public class ChessPiece {
     private JLabel myLabel;
     private int myColor;
     private boolean active;
+    private int x;
+    private int y;
     
     /**
      *  constructor: Chess piece information
@@ -29,6 +31,7 @@ public class ChessPiece {
         myLabel = new JLabel(i, JLabel.CENTER);
         myColor = c;
         active = true;
+
     }
 
     /**
@@ -48,7 +51,6 @@ public class ChessPiece {
     public JLabel getMyLabel(){
         return myLabel;
     }
-    
     /**
      * return active
      * 
@@ -88,7 +90,9 @@ public class ChessPiece {
      * @param i
      * @param j
      */
-	public void move(Board board, int i, int j) {
-		// TODO Auto-generated method stub		
+	public void move(Board board, int fromX, int fromY, int toX, int toY) {
+		if(isValid(board,fromX,fromY,toX,toY)){
+            board.movePiece(board,fromX,fromY,toX,toY);
+        }
 	}
 }
