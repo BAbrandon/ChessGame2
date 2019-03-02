@@ -146,10 +146,30 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 	 * Returns the game board panel
 	 */
 	public void reDraw(){
+		JPanel pCenter2= new JPanel();
+		pCenter.removeAll();
+		pCenter.revalidate();
+		pCenter.repaint();
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				pCenter.add(myBoard.getPanelBoard()[i][j]);
-				myBoard.getPanelBoard()[i][j].addMouseListener(mouseList);
+
+				//pCenter2.setSize(800, 800);
+				//pCenter2.setLayout(new GridLayout(8, 8));
+				add(pCenter, BorderLayout.CENTER);
+				JButton newPanelboard[][] = new JButton[8][8];;
+				newPanelboard[i][j] = new JButton();
+				//myBoard.getPanelBoard()[i][j].addMouseListener(mouseList);
+				newPanelboard[i][j].addMouseListener(mouseList);
+
+				if ((i + j) % 2 == 0) {
+					newPanelboard[i][j].setBackground(Color.DARK_GRAY);
+				} else {
+					newPanelboard[i][j].setBackground(Color.WHITE);
+				}
+				newPanelboard[i][j].add(myBoard.getChessboard()[i][j].getMyLabel());
+				myBoard.setMyPanelboard(newPanelboard);
+				newPanelboard[i][j].addActionListener(new SpotListener(myBoard, this));
+				pCenter.add(newPanelboard[i][j]);
 				System.out.print(myBoard.getChessboard()[i][j].getMyName().substring(0,1)+"");
 	}
 	System.out.println();
@@ -273,7 +293,10 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 	 * 
 	 */
 	public void setCords(int x, int y){
-	if(!from){
+		String title = "<html>Current Player's Turn: <br><html>";
+
+
+		if(!from){
 		fromX = x;
 		fromY = y;
 		from = true;
@@ -283,6 +306,7 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 		from = false;
 		if(play){
 			System.out.println("player1");
+			playerLabel.setText(title+"Player 2");
 			if (p1.movePiece(myBoard, fromX, fromY, toX, toY)) {
 
 				play = false;
@@ -291,23 +315,25 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 				//System.out.println("fuckme");
 				myPanelSwitcherView.update();
 				System.out.println("" + fromX + " " + fromY + "  " + toX + " " + toY);
-				boardPanel.removeAll();
+				pCenter.removeAll();
 				reDraw();
-				boardPanel.revalidate();
-				boardPanel.repaint();
+				pCenter.revalidate();
+				pCenter.repaint();
 				fromX = fromY = toX = toY = -1;
 			}
 		}else{
+			playerLabel.setText(title+"Player 1");
+
 			System.out.println("player2");
 			if(p2.movePiece(myBoard,fromX,fromY,toX,toY)){
 
 				play = true;
 				//System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
 				//System.out.println("" + fromX + " " + fromY + "  " + toX + " " + toY);
-				boardPanel.removeAll();
+				pCenter.removeAll();
 				reDraw();
-				boardPanel.revalidate();
-				boardPanel.repaint();
+				pCenter.revalidate();
+				pCenter.repaint();
 				fromX = fromY = toX = toY = -1;
 
 			}

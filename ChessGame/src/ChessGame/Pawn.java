@@ -35,8 +35,8 @@ public class Pawn extends ChessPiece{
      */
     public boolean isValid(Board board, int fromX, int fromY, int toX, int toY) {
         return true;
-      //  if (board.getPiece(toX, toY).getMyColor() != getMyColor() || board.getPiece(toX, toY).equals(new NullSpot("null", -1, "null.png"))) {
-            /*
+       /* if (board.getPiece(toX, toY).getMyColor() != getMyColor() || board.getPiece(toX, toY).equals(new NullSpot("null", -1, "null.png"))) {
+
             if (super.isValid(board, fromX, fromY, toX, toY) == false)
                 return false;
             if (moveCounter <= 0 && fromX == toX && toY == fromY + 1)
@@ -47,7 +47,7 @@ public class Pawn extends ChessPiece{
            }
         }
         return false;
-        */
-        //}
+
+       */ }
     }
-}
+//}

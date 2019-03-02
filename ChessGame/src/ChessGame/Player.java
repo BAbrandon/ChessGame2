@@ -50,11 +50,12 @@ public class Player {
 				chessboard[toX][toY] = chessboard[fromX][fromY];
 				chessboard[fromX][fromY] = new NullSpot("null",-1,"transparent.png");
 				System.out.println("is valid worked");
-				myPanelBoard = board.getPanelBoard();
+				/*myPanelBoard = board.getPanelBoard();
 				myPanelBoard[toX][toY] = myPanelBoard[fromX][fromY];
 				JButton b= new JButton();
 				b.add(new NullSpot("null", -1, "transparent.png").getMyLabel());
 				myPanelBoard[fromX][fromY] =b ;
+				*/
 
 				return true;
 			} else{

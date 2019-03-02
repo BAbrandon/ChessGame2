@@ -49,6 +49,7 @@ public class SpotListener implements ActionListener{
             for (int j = 0; j < 8; j++) {
                     if (e.getSource() == myPanelboard[i][j]) {
                         myView.setCords(i,j);
+                        System.out.println("clicky click");
                     }
             }
         }

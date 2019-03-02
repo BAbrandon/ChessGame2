@@ -53,7 +53,9 @@ public class Board {
             return null;
         return chessboard[i][j];
     }
-    
+    public void setMyPanelboard(JButton board[][]){
+        myPanelboard = board;
+    }
     /**
      * returns myPanelboard
      * 
