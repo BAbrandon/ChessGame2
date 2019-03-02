@@ -40,7 +40,7 @@ public class Board {
         }
 
     }
-    
+
     /**
      * gets piece to check and return if null or return location
      * 

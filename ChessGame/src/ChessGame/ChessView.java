@@ -145,6 +145,20 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 	/*
 	 * Returns the game board panel
 	 */
+	public void reDraw(){
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				pCenter.add(myBoard.getPanelBoard()[i][j]);
+				myBoard.getPanelBoard()[i][j].addMouseListener(mouseList);
+				System.out.print(myBoard.getChessboard()[i][j].getMyName().substring(0,1)+"");
+	}
+	System.out.println();
+}
+
+		boardPanel.add(pCenter, BorderLayout.CENTER);
+
+
+	}
 	public JPanel getBoardPanel() {
 		return boardPanel;
 	}
@@ -206,8 +220,7 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 				fromX = fromY = toX = toY = -1;
 				play = false;
 				set = false;
-				System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
-				myPanelSwitcherView.update();
+				//System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
 			}
 		}else{
 			System.out.println("player2\n\n\n\n");
@@ -274,24 +287,29 @@ public class ChessView extends JFrame implements Runnable, MouseListener, MouseM
 
 				play = false;
 				set = false;
-				System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
+				//System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
+				//System.out.println("fuckme");
 				myPanelSwitcherView.update();
-				System.out.println(""+fromX+" "+fromY+"  "+toX+" "+toY);
+				System.out.println("" + fromX + " " + fromY + "  " + toX + " " + toY);
+				boardPanel.removeAll();
+				reDraw();
+				boardPanel.revalidate();
+				boardPanel.repaint();
 				fromX = fromY = toX = toY = -1;
-				repaint();
-				validate();
 			}
 		}else{
 			System.out.println("player2");
 			if(p2.movePiece(myBoard,fromX,fromY,toX,toY)){
 
 				play = true;
-				System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
-				System.out.println("" + fromX + " " + fromY + "  " + toX + " " + toY);
-				myPanelSwitcherView.update();
+				//System.out.println("The Piece i moved was"+myBoard.getPiece(toX,toY));
+				//System.out.println("" + fromX + " " + fromY + "  " + toX + " " + toY);
+				boardPanel.removeAll();
+				reDraw();
+				boardPanel.revalidate();
+				boardPanel.repaint();
 				fromX = fromY = toX = toY = -1;
-				repaint();
-				validate();
+
 			}
 		}
 	}

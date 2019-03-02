@@ -54,7 +54,8 @@ public class Player {
 				myPanelBoard[toX][toY] = myPanelBoard[fromX][fromY];
 				JButton b= new JButton();
 				b.add(new NullSpot("null", -1, "transparent.png").getMyLabel());
-				myPanelBoard[fromX][fromY].setIcon(b.getIcon());
+				myPanelBoard[fromX][fromY] =b ;
+
 				return true;
 			} else{
 				return false;

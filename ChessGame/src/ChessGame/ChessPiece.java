@@ -12,6 +12,7 @@ public class ChessPiece {
 	
     private JLabel myLabel;
     private int myColor;
+    private String myName;
     private boolean active;
     private int x;
     private int y;
@@ -30,6 +31,7 @@ public class ChessPiece {
         myLabel.setOpaque(true);
         myLabel = new JLabel(i, JLabel.CENTER);
         myColor = c;
+        myName = name;
         active = true;
 
     }
@@ -50,6 +52,10 @@ public class ChessPiece {
      */
     public JLabel getMyLabel(){
         return myLabel;
+    }
+
+    public String getMyName(){
+        return myName;
     }
     /**
      * return active
